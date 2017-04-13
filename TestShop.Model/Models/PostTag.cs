@@ -7,10 +7,13 @@ namespace TestShop.Model.Models
     public class PostTag
     {
         [Key]
+        [Column(Order = 1)]
         public int PostID { set; get; }
         [ForeignKey("PostID")]
         public virtual Post Post { set; get; }
         [Key]
+        [Column(Order = 2,TypeName ="varchar")]
+        [MaxLength(50)]
         public string TagID { set; get; }
         [ForeignKey("TagID")]
         public virtual Tag Tag { set; get; }

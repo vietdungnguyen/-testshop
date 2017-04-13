@@ -12,10 +12,13 @@ namespace TestShop.Model.Models
     public class ProductTag
     {
         [Key]
+        [Column(Order = 1)]
         public int ProductID { set; get; }
         [ForeignKey("ProductID")]
         public virtual Product Product { set; get; }
-        [Key]        
+        [Key]
+        [Column(Order = 2, TypeName = "varchar")]
+        [MaxLength(50)]
         public string TagID { set; get; }
         [ForeignKey("TagID")]
         public virtual Tag Tag { set; get; }

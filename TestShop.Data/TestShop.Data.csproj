@@ -49,7 +49,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\IReponsetory.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201704131656230_InitialDB.cs" />
+    <Compile Include="Migrations\201704131656230_InitialDB.Designer.cs">
+      <DependentUpon>201704131656230_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reponsitories\ProductCategoryReponsitory.cs" />
+    <Compile Include="Reponsitories\ProductReponsitory.cs" />
+    <Compile Include="TestShopDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -60,6 +75,15 @@
       <Project>{d320fa3e-7073-4b97-9af6-5849516d2b44}</Project>
       <Name>TestShop.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TestShop.Model\TestShop.Model.csproj">
+      <Project>{6e550697-6928-4263-af5f-cbca03c938d5}</Project>
+      <Name>TestShop.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704131656230_InitialDB.resx">
+      <DependentUpon>201704131656230_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
