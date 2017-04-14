@@ -8,13 +8,13 @@ using TestShop.Model.Models;
 
 namespace TestShop.Data.Reponsitories
 {
-    public interface IProductReponsitory
+    public interface IMenuGroupReponsitory
     {
 
     }
-    public class ProductReponsitory : RepositoryBase<Product>, IProductReponsitory
+    public class MenuGroupReponsitory : RepositoryBase<MenuGroup>,IMenuGroupReponsitory
     {
-        public ProductReponsitory(IDbFactory dbFactory) : base(dbFactory)
+        public MenuGroupReponsitory(IDbFactory dbFactory):base(dbFactory)
         {
 
         }

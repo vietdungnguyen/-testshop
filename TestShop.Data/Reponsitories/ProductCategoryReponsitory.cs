@@ -10,7 +10,7 @@ namespace TestShop.Data.Reponsitories
         IEnumerable<ProductCategory> GetByAlias(string alias);
     }
 
-    public class ProductCategoryReponsitory : RepositoryBase<ProductCategory>
+    public class ProductCategoryReponsitory : RepositoryBase<ProductCategory>,IProductCategoryRepository
     {
         public ProductCategoryReponsitory(IDbFactory dbFactory) : base(dbFactory)
         {
