@@ -3,7 +3,7 @@ using TestShop.Model.Models;
 
 namespace TestShop.Data.Reponsitories
 {
-    public interface IFooterReponsitory
+    public interface IFooterReponsitory : IReponsitory<Footer>
     {
     }
 

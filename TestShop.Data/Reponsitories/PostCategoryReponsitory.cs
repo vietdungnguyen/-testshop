@@ -3,7 +3,7 @@ using TestShop.Model.Models;
 
 namespace TestShop.Data.Reponsitories
 {
-    public interface IPostCategoryReponsitory
+    public interface IPostCategoryReponsitory : IReponsitory<PostCategory>
     {
     }
 

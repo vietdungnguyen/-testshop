@@ -3,7 +3,7 @@ using TestShop.Model.Models;
 
 namespace TestShop.Data.Reponsitories
 {
-    public interface IProductTagReponsitory
+    public interface IProductTagReponsitory : IReponsitory<ProductTag>
     {
     }
 

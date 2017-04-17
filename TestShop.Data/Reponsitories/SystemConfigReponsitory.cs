@@ -3,11 +3,11 @@ using TestShop.Model.Models;
 
 namespace TestShop.Data.Reponsitories
 {
-    public interface ISystemConfigReponsitory
+    public interface ISystemConfigReponsitory : IReponsitory<SystemConfig>
     {
     }
 
-    public class SystemConfigReponsitory : RepositoryBase<OrderDetail>, ISystemConfigReponsitory
+    public class SystemConfigReponsitory : RepositoryBase<SystemConfig>, ISystemConfigReponsitory
     {
         public SystemConfigReponsitory(IDbFactory dbFactory) : base(dbFactory)
         {

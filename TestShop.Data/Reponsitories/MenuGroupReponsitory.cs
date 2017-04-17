@@ -8,7 +8,7 @@ using TestShop.Model.Models;
 
 namespace TestShop.Data.Reponsitories
 {
-    public interface IMenuGroupReponsitory
+    public interface IMenuGroupReponsitory : IReponsitory<MenuGroup>
     {
 
     }

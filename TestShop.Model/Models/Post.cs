@@ -2,11 +2,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
+using TestShop.Model.Abstract;
 
 namespace TestShop.Model.Models
 {
     [Table("Posts")]
-    public class Post
+    public class Post : Auditable
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -30,6 +31,8 @@ namespace TestShop.Model.Models
         public bool? HomeFlag { set; get; }
         public bool? HotFlag { set; get; }
         public int ViewCount { set; get; }
-       // public virtual IEnumerable<PostTag> PostTags { set; get; }
+
+        public bool Status { set; get; }
+        public virtual IEnumerable<PostTag> PostTags { set; get; }
     }
 }

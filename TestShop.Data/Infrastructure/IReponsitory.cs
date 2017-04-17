@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace TestShop.Data.Infrastructure
 {
-    public interface IReponsetory<T> where T:class
+    public interface IReponsitory<T> where T:class
     {
         //add new entity
         void Add(T entity);
 
         //updated entity
-        void Update(T entity);
+        void Update(T entity);      
 
         //Delete entity
         void Delete(T entity);
+        void Delete(int id);
 
         //Delete multi entity
         void DeleteMulti(Expression<Func<T, bool>> where);

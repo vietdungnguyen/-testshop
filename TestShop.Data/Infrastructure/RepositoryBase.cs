@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TestShop.Data.Infrastructure
 {
-    public abstract class RepositoryBase<T> : IReponsetory<T> where T : class
+    public abstract class RepositoryBase<T> : IReponsitory<T> where T : class
     {
         #region Properties
         private TestShopDbContext dataContext;
@@ -40,6 +40,11 @@ namespace TestShop.Data.Infrastructure
         }
         public virtual void Delete(T entity)
         {
+            dbSet.Remove(entity);
+        }
+        public virtual void Delete(int id)
+        {
+            var entity = dbSet.Find(id);
             dbSet.Remove(entity);
         }
         public virtual void DeleteMulti(Expression<Func<T,bool>>where)
@@ -113,10 +118,11 @@ namespace TestShop.Data.Infrastructure
             return GetAll(includes).FirstOrDefault(expression);
         }
 
-        IQueryable<T> IReponsetory<T>.GetMultiPaging(Expression<Func<T, bool>> filter, out int total, int index, int size, string[] includes)
+        IQueryable<T> IReponsitory<T>.GetMultiPaging(Expression<Func<T, bool>> filter, out int total, int index, int size, string[] includes)
         {
             throw new NotImplementedException();
         }
+
         #endregion
     }
 }

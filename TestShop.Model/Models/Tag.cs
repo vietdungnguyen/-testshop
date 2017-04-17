@@ -17,6 +17,7 @@ namespace TestShop.Model.Models
         [MaxLength(50)]
         [Required]
         public string Type { set; get; }
-       // public virtual IEnumerable<ProductTag> TagProducts { set; get; }
+        public virtual IEnumerable<ProductTag> TagProducts { set; get; }
+        public virtual IEnumerable<PostTag> TagPosts { set; get; }
     }
 }

@@ -37,7 +37,9 @@ namespace TestShop.Model.Models
         public bool? HomeFlag { set; get; }
         public bool? HotFlag { set; get; }
         public int ViewCount { set; get; }
+
+        public bool Status { set; get; }
         public virtual IEnumerable<ProductTag> ProductTags { set; get; }
-       // public virtual IEnumerable<OrderDetail> ProductDetails { set; get; }
+        public virtual IEnumerable<OrderDetail> ProductDetails { set; get; }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace TestShop.Data.Reponsitories
 {
-    public interface IVisitorStatistic
+    public interface IVisitorStatistic : IReponsitory<VisitorStatistic>
     {
     }
 

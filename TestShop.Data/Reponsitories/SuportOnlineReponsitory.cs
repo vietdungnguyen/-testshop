@@ -3,7 +3,7 @@ using TestShop.Model.Models;
 
 namespace TestShop.Data.Reponsitories
 {
-    public interface ISuportOnlineReponsitory
+    public interface ISuportOnlineReponsitory : IReponsitory<SuportOnline>
     {
     }
 
