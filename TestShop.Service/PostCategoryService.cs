@@ -11,12 +11,14 @@ namespace TestShop.Service
 {
     public interface IPostCategoryService
     {
-        void Add(PostCategory postCategory);
+        PostCategory Add(PostCategory postCategory);
         void Update(PostCategory postCategory);
-        void Delete(int id);
+        PostCategory Delete(int id);
         IEnumerable<PostCategory> GetAll();
         IEnumerable<PostCategory> GetAllByParentId(int parentId);
         PostCategory GetById(int id);
+
+        void Save();
     }
     public class PostCategoryService : IPostCategoryService
     {
@@ -27,14 +29,14 @@ namespace TestShop.Service
             this._postCategoryReponsitory = postCategoryReponsitory;
             this._unitOfWork = unitOfWork;
         }
-        public void Add(PostCategory postCategory)
+        public PostCategory Add(PostCategory postCategory)
         {
-            _postCategoryReponsitory.Add(postCategory);
+            return _postCategoryReponsitory.Add(postCategory);
         }
 
-        public void Delete(int id)
+        public PostCategory Delete(int id)
         {
-            _postCategoryReponsitory.Delete(id);
+           return _postCategoryReponsitory.Delete(id);
         }
 
         public IEnumerable<PostCategory> GetAll()
@@ -50,6 +52,11 @@ namespace TestShop.Service
         public PostCategory GetById(int id)
         {
             return _postCategoryReponsitory.GetSingleById(id);
+        }
+
+        public void Save()
+        {
+            _unitOfWork.Comid();
         }
 
         public void Update(PostCategory postCategory)

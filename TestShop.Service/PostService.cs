@@ -9,11 +9,11 @@ namespace TestShop.Service
 {
     public interface IPostService
     {
-        void Add(Post post);
+        Post Add(Post post);
 
         void Update(Post post);
 
-        void Delete(int ID);
+        Post Delete(int ID);
 
         IEnumerable<Post> GetAll();
 
@@ -36,14 +36,14 @@ namespace TestShop.Service
             this._postReponsitory = postReponsitory;
             this._unitOfWork = unitOfWork;
         }
-        public void Add(Post post)
+        public Post Add(Post post)
         {
-            _postReponsitory.Add(post);
+            return _postReponsitory.Add(post);
         }
 
-        public void Delete(int id)
+        public Post Delete(int id)
         {
-            _postReponsitory.Delete(id);
+            return _postReponsitory.Delete(id);
         }
 
         public IEnumerable<Post> GetAll()
@@ -53,7 +53,7 @@ namespace TestShop.Service
 
         public IEnumerable<Post> GetAllByCategoryPaging(int categoryId, int page, int pageSize, out int totalRow)
         {
-            return _postReponsitory.GetMultiPaging(x => x.Status && x.CategoryID == categoryId,out totalRow,page,pageSize,new string[] {"PostCategory");
+            return _postReponsitory.GetMultiPaging(x => x.status && x.CategoryID == categoryId,out totalRow,page,pageSize,new string[] { "PostCategory" });
         }
 
         public IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
@@ -64,7 +64,7 @@ namespace TestShop.Service
 
         public IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow)
         {
-            return _postReponsitory.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
+            return _postReponsitory.GetMultiPaging(x => x.status, out totalRow, page, pageSize);
 
         }
 

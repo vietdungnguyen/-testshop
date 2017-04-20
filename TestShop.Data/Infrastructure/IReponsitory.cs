@@ -10,14 +10,14 @@ namespace TestShop.Data.Infrastructure
     public interface IReponsitory<T> where T:class
     {
         //add new entity
-        void Add(T entity);
+        T Add(T entity);
 
         //updated entity
         void Update(T entity);      
 
         //Delete entity
-        void Delete(T entity);
-        void Delete(int id);
+        T Delete(T entity);
+        T Delete(int id);
 
         //Delete multi entity
         void DeleteMulti(Expression<Func<T, bool>> where);
@@ -27,11 +27,11 @@ namespace TestShop.Data.Infrastructure
 
         T GetSingleByConditon(Expression<Func<T, bool>> expression, string[] includes=null);
 
-        IQueryable<T> GetAll(string[] includes=null);
+        IEnumerable<T> GetAll(string[] includes=null);
 
-        IQueryable<T> GetMulti(Expression<Func<T, bool>> predicate,string[] includes=null);
+        IEnumerable<T> GetMulti(Expression<Func<T, bool>> predicate,string[] includes=null);
 
-        IQueryable<T> GetMultiPaging(Expression<Func<T, bool>>filter,out int total,int index=0,int size=50,string[] includes=null);
+        IEnumerable<T> GetMultiPaging(Expression<Func<T, bool>>filter,out int total,int index=0,int size=50,string[] includes=null);
 
         int Count(Expression<Func<T,bool>> where);
 

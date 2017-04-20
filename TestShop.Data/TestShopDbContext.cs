@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using TestShop.Model.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace TestShop.Data
 {
-    public class TestShopDbContext : DbContext
+    public class TestShopDbContext : IdentityDbContext<ApplicationUser>
     {
         public TestShopDbContext() : base("TestShopConnection")
         {
@@ -30,9 +31,18 @@ namespace TestShop.Data
         public DbSet<SystemConfig> SystemConfigs { set; get; }
         public DbSet<Tag> Tags { set; get; }
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
+
+        public DbSet<Error> Errors { set; get; }
+        // create 
+        public static TestShopDbContext Create()
+        {
+            return new TestShopDbContext();
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId,i.RoleId });
+            modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
+
         }
     }
 }
