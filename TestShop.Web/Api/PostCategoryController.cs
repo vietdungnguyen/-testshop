@@ -8,10 +8,13 @@ using TestShop.Service;
 using TestShop.Web.Infrastructure.Core;
 using TestShop.Web.Models;
 using TestShop.Web.Infrastructure.Extensions;
+using System.Linq;
+using System;
 
 namespace TestShop.Web.Api
 {
     [RoutePrefix("api/postcategory")]
+    [Authorize]
     public class PostCategoryController : ApiControllerBase
     {
         IPostCategoryService _postCategoryService;
@@ -81,15 +84,29 @@ namespace TestShop.Web.Api
             });
         }
         [Route("getall")]
-        public HttpResponseMessage Get(HttpRequestMessage request)
+        public HttpResponseMessage Get(HttpRequestMessage request,string keyword,int page,int pageSize=20)
         {
             return CreateHttpReponse(request, () =>
             {
-                var listCategory = _postCategoryService.GetAll();
+                int totalRow=0;
 
-                var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
+                var listCategory = _postCategoryService.GetAll(keyword);
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
+                totalRow = listCategory.Count();
+
+                var query = listCategory.OrderByDescending(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize);
+
+                var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(query);
+
+                var pagintionSet = new PaginationSet<PostCategoryViewModel>()
+                {
+                    Items = listPostCategoryVm,
+                    Page = page,
+                    TotalCount=totalRow,
+                    TotalPages=(int)Math.Ceiling((decimal)totalRow/pageSize)
+                };
+
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, pagintionSet);
                 
                 return response;
             });

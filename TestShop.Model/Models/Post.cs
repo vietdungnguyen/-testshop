@@ -32,6 +32,8 @@ namespace TestShop.Model.Models
         public bool? HotFlag { set; get; }
         public int ViewCount { set; get; }
 
+        public string Tags { set; get; }
+
         public virtual IEnumerable<PostTag> PostTags { set; get; }
     }
 }

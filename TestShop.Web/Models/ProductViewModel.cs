@@ -22,6 +22,7 @@ namespace TestShop.Web.Models
         public bool? HomeFlag { set; get; }
         public bool? HotFlag { set; get; }
         public int ViewCount { set; get; }
+        public string Tags { set; get; }
         public virtual IEnumerable<ProductTagViewModel> ProductTags { set; get; }
         public virtual IEnumerable<OrderDetailViewModel> ProductDetails { set; get; }
         public DateTime? CreatedDate { set; get; }

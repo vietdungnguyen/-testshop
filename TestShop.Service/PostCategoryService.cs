@@ -15,6 +15,7 @@ namespace TestShop.Service
         void Update(PostCategory postCategory);
         PostCategory Delete(int id);
         IEnumerable<PostCategory> GetAll();
+        IEnumerable<PostCategory> GetAll(string keyword);
         IEnumerable<PostCategory> GetAllByParentId(int parentId);
         PostCategory GetById(int id);
 
@@ -42,6 +43,16 @@ namespace TestShop.Service
         public IEnumerable<PostCategory> GetAll()
         {
             return _postCategoryReponsitory.GetAll();
+        }
+
+        public IEnumerable<PostCategory> GetAll(string keyword)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                return _postCategoryReponsitory.GetMulti(x=>x.Name.Contains(keyword) || x.Description.Contains(keyword));
+            }
+            else
+                return _postCategoryReponsitory.GetAll();
         }
 
         public IEnumerable<PostCategory> GetAllByParentId(int parentId)

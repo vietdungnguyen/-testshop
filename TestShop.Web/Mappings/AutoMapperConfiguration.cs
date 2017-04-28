@@ -16,6 +16,7 @@ namespace TestShop.Web.Mappings
                 cfg.CreateMap<Tag, TagViewModel>();
                 cfg.CreateMap<PostTag, PostTagViewModel>();
                 cfg.CreateMap<ProductTag, ProductTagViewModel>();
+                cfg.CreateMap<Footer, FooterViewModel>();
             });           
         }
     }
